@@ -9,7 +9,7 @@ mkdir /apps/nginx
 mkdir /apps/php
 
 # 安装nginx
-yum -y install gcc gcc-c++ autoconf automake make
+yum -y install gcc gcc-c++ autoconf automake make git
 yum -y install zlib zlib-devel openssl openssl--devel pcre pcre-devel
 wget http://nginx.org/download/nginx-1.8.1.tar.gz
 tar zvxf nginx-1.8.1.tar.gz
@@ -20,8 +20,10 @@ cd ..
 mkdir /var/www
 mkdir /var/www/html
 mv /apps/nginx/html/* /var/www/html/
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/nginx.conf
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php_env/nginx.conf
 mv nginx.conf /apps/nginx/conf/
+echo "export PATH=/apps/nginx/sbin:\$PATH" >> ~/.bashrc
+source ~/.bashrc
 
 # 安装mysql
 /usr/sbin/groupadd mysql
@@ -62,9 +64,10 @@ cp /apps/mysql/support-files/my-large.cnf /etc/my.cnf
 
 cp /apps/mysql/support-files/mysql.server /etc/init.d/
 service mysql.server start
+echo "export PATH=/apps/mysql/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc
 
 # 安装php
-
 yum -y install libmcrypt-devel mhash-devel libxslt-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel
 wget http://cn2.php.net/distributions/php-5.5.22.tar.gz
 tar -zvxf php-5.5.22.tar.gz
@@ -74,15 +77,19 @@ make && make install
 cd ..
 /usr/sbin/groupadd www-data
 /usr/sbin/useradd -g www-data www-data
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php-fpm.conf
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php_env/php-fpm.conf
 mv php-fpm.conf /apps/php/etc/
 cp php-5.5.22/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
 chkconfig --add php-fpm
 service php-fpm start
+echo "export PATH=/apps/php/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc
 
 # 安装phpmyadmin
 cd /var/www/html
 wget https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-english.tar.gz
 tar -zvxf phpMyAdmin-4.6.3-english.tar.gz
 mv phpMyAdmin-4.6.3-english mysqladmin
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php_env/config.inc.php
+mv config.inc.php mysqladmin/
