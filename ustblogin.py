@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
+""" 登陆USTB本科教学网 """
 import urllib
 import urllib2
 import socket
