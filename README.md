@@ -1,2 +1,2 @@
 # linux_scripts
-ubuntu、centos安装软件脚本。
+一些linux的工具脚本。
