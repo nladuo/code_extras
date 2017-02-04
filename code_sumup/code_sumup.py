@@ -3,7 +3,7 @@
 """ 代码行数统计 """
 
 import sys
-import os  
+import os
 
 def help():
     print("usage\t: ./code_sumup.py [path] [suffix(s)]")
@@ -28,12 +28,12 @@ if __name__ == '__main__':
 
     # 递归遍历
     def count(path):
-        files =  os.listdir(path)  
-        for filename in files:  
-            filepath = os.path.join(path, filename)  
-            if os.path.isdir(filepath):  
-                count(filepath)  
-            else:  
+        files =  os.listdir(path)
+        for filename in files:
+            filepath = os.path.join(path, filename)
+            if os.path.isdir(filepath):
+                count(filepath)
+            else:
                 ext = os.path.splitext(filepath)[1][1:]
                 if ext in types:
                     line_num = line_count(filepath)
@@ -43,6 +43,6 @@ if __name__ == '__main__':
     total = 0
     for t in types:
         total = total + results[t]
-        print t, "\t:", results[t], "行"
+        print "."+t, "\t:", results[t], "行"
 
     print "total\t:", total, "行"
