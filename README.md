@@ -1,2 +1,2 @@
-# linux_scripts
+# linux_tools
 一些linux的工具脚本。
