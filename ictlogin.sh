@@ -1,10 +1,11 @@
 #!/bin/bash
-# 计算所登陆校园网脚本
+#Description:  计算所网络认证登陆脚本
+#Author: Kalen Blue
 
 username=""
 password=""
 
-pass_salt=$(echo -n '12345678'|md5sum|cut -d ' ' -f1)
+pass_salt=$(echo -n $username | md5sum | cut -d ' ' -f1)
 pass_salt=${pass_salt:8:16}
 
 formdata="username="$username"&password="$pass_salt"&drop=0&type=1&n=100"
