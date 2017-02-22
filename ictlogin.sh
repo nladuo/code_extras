@@ -5,7 +5,7 @@
 username=""
 password=""
 
-pass_salt=$(echo -n $username | md5sum | cut -d ' ' -f1)
+pass_salt=$(echo -n $password | md5sum | cut -d ' ' -f1)
 pass_salt=${pass_salt:8:16}
 
 formdata="username="$username"&password="$pass_salt"&drop=0&type=1&n=100"
