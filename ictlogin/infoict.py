@@ -14,7 +14,7 @@ def format_time(sec):
         out += "%d小时" % h
     if h > 0 or m>0:
         out += "%d分" %m
-        out += "%d秒" % s;
+    out += "%d秒" % s;
     return out;
 
 def format_flux(byte):
