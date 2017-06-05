@@ -77,7 +77,7 @@ make && make install
 cd ..
 /usr/sbin/groupadd www-data
 /usr/sbin/useradd -g www-data www-data
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php_env/php-fpm.conf
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos/6.6/resource/php-fpm.conf
 mv php-fpm.conf /apps/php/etc/
 cp php-5.5.22/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
@@ -91,5 +91,5 @@ cd /var/www/html
 wget https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-english.tar.gz
 tar -zvxf phpMyAdmin-4.6.3-english.tar.gz
 mv phpMyAdmin-4.6.3-english mysqladmin
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php_env/config.inc.php
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos/6.6/resource/config.inc.php
 mv config.inc.php mysqladmin/
