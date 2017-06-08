@@ -9,7 +9,7 @@ mkdir /apps/nginx
 mkdir /apps/php
 
 # 安装nginx
-yum -y install gcc gcc-c++ autoconf automake make git
+yum -y install gcc gcc-c++ autoconf automake make git wget
 yum -y install zlib zlib-devel openssl openssl--devel pcre pcre-devel
 wget http://nginx.org/download/nginx-1.8.1.tar.gz
 tar zvxf nginx-1.8.1.tar.gz
@@ -20,8 +20,8 @@ cd ..
 mkdir /var/www
 mkdir /var/www/html
 mv /apps/nginx/html/* /var/www/html/
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/php_env/centos/6.6/resource/nginx.conf
-mv -f nginx.conf /apps/nginx/conf/
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos6.6/php_env/nginx.conf
+mv nginx.conf /apps/nginx/conf/
 echo "export PATH=/apps/nginx/sbin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 
