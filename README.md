@@ -1,2 +1,2 @@
 # linux_tools
-一些linux的工具脚本。
+自用的linux下的工具or脚本。

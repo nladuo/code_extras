@@ -1,5 +1,5 @@
 #!/bin/bash
-
+yum install epel-release
 yum update
 
 #创建文件夹
@@ -77,7 +77,7 @@ make && make install
 cd ..
 /usr/sbin/groupadd www-data
 /usr/sbin/useradd -g www-data www-data
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos/6.6/resource/php-fpm.conf
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/php_env/centos/6.6/resource/php-fpm.conf
 mv php-fpm.conf /apps/php/etc/
 cp php-5.5.22/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
@@ -86,10 +86,19 @@ service php-fpm start
 echo "export PATH=/apps/php/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 
+# 安装php-redis
+wget https://github.com/phpredis/phpredis/archive/2.2.4.tar.gz
+tar zvxf 2.2.4.tar.gz
+cd phpredis-2.2.4
+phpize
+./configure --with-php-config=/apps/php/bin/php-config
+make && make install
+
 # 安装phpmyadmin
 cd /var/www/html
 wget https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-english.tar.gz
 tar -zvxf phpMyAdmin-4.6.3-english.tar.gz
 mv phpMyAdmin-4.6.3-english mysqladmin
-wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/centos/6.6/resource/config.inc.php
+wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/php_env/centos/6.6/resource/config.inc.php
 mv config.inc.php mysqladmin/
+mv mysqladmin /var/www/html
