@@ -69,9 +69,9 @@ source ~/.bashrc
 
 # 安装php
 yum -y install libmcrypt-devel mhash-devel libxslt-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel
-wget http://cn2.php.net/distributions/php-5.5.22.tar.gz
-tar -zvxf php-5.5.22.tar.gz
-cd php-5.5.22
+wget https://www.php.net/distributions/php-5.5.38.tar.gz
+tar -zvxf php-5.5.38.tar.gz
+cd php-5.5.38
 ./configure --prefix=/apps/php  --enable-fpm --with-mcrypt --enable-mbstring --enable-pdo --with-pdo-mysql=/apps/mysql --with-curl --disable-debug  --disable-rpath --enable-inline-optimization --with-bz2  --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --with-mhash --enable-zip --with-pcre-regex --with-mysql --with-mysqli --with-gd --with-jpeg-dir --without-pear 
 make && make install
 cd ..
