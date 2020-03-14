@@ -79,7 +79,7 @@ cd ..
 /usr/sbin/useradd -g www-data www-data
 wget https://raw.githubusercontent.com/nladuo/linux_scripts/master/php_env/centos/6.6/resource/php-fpm.conf
 mv php-fpm.conf /apps/php/etc/
-cp php-5.5.22/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+cp php-5.5.38/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
 chkconfig --add php-fpm
 service php-fpm start
